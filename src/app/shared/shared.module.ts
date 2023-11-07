@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Error404PageComponent } from './pages/error404-page/error404-page.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
@@ -11,7 +10,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     SidebarComponent
   ],
   imports: [
-    CommonModule
+    // CommonModule
+  ],
+  exports: [
+    Error404PageComponent,
+    SidebarComponent
   ]
 })
 export class SharedModule { }
