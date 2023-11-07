@@ -7,6 +7,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { ListPropertiesPageComponent } from './pages/list-properties-page/list-properties-page.component';
 import { PropertyPageComponent } from './pages/property-page/property-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    SharedModule
   ]
 })
 export class AdminModule { }
