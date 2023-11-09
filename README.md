@@ -2,9 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
 
-## Development server
+## Run application
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Clone repository
+2. Run in the proyect folder `npm install`
+3. Install angular cli
+4. run `ng serve -o` or open `http://localhost:4200/`
+
 
 ## Available routes ( dev )
 
