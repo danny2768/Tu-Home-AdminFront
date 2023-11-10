@@ -1,1 +1,65 @@
-<p>register-page works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+  <div class="form-group">
+    <label for="name">Nombre:</label>
+
+    <input type="text" class="form-control" id="name" formControlName="name" />
+  </div>
+
+  <div class="form-group">
+    <label for="surname">Apellido:</label>
+
+    <input
+      type="text"
+      class="form-control"
+      id="surname"
+      formControlName="surname"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Correo electrónico:</label>
+
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      formControlName="email"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="password">Contraseña:</label>
+
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="documentNumber">Número de documento:</label>
+
+    <input
+      type="text"
+      class="form-control"
+      id="documentNumber"
+      formControlName="documentNumber"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="documentType">Tipo de documento:</label>
+
+    <select
+      class="form-control"
+      id="documentType"
+      formControlName="documentType"
+    >
+      <option value="1">CC</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Registrarse</button>
+</form>
