@@ -1,8 +1,4 @@
-
-// export const environments = {
-//   baseUrl: 'https://tu-home-backend.up.railway.app/'
-// }
-
+// https://tu-home-backend.up.railway.app/swagger-ui/index.html#/
 export const environments = {
-  baseUrl: 'http://localhost:8080'
+  baseUrl: 'https://tu-home-backend.up.railway.app'
 }
