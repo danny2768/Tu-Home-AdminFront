@@ -2,7 +2,16 @@
   <div class="form-group">
     <label for="name">Nombre:</label>
 
-    <input type="text" class="form-control" id="name" formControlName="name" />
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      formControlName="name"
+    />
+
+    <span *ngIf="isValidField('name')" class="form-text text-danger">
+      {{ getFieldError("name") }}
+    </span>
   </div>
 
   <div class="form-group">
@@ -14,6 +23,10 @@
       id="surname"
       formControlName="surname"
     />
+
+    <span *ngIf="isValidField('surname')" class="form-text text-danger">
+      {{ getFieldError("surname") }}
+    </span>
   </div>
 
   <div class="form-group">
@@ -25,6 +38,10 @@
       id="email"
       formControlName="email"
     />
+
+    <span *ngIf="isValidField('email')" class="form-text text-danger">
+      {{ getFieldError("email") }}
+    </span>
   </div>
 
   <div class="form-group">
@@ -36,6 +53,10 @@
       id="password"
       formControlName="password"
     />
+
+    <span *ngIf="isValidField('password')" class="form-text text-danger">
+      {{ getFieldError("password") }}
+    </span>
   </div>
 
   <div class="form-group">
@@ -47,6 +68,10 @@
       id="documentNumber"
       formControlName="documentNumber"
     />
+
+    <span *ngIf="isValidField('documentNumber')" class="form-text text-danger">
+      {{ getFieldError("documentNumber") }}
+    </span>
   </div>
 
   <div class="form-group">

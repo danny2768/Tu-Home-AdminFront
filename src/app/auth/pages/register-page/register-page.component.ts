@@ -13,8 +13,8 @@ export class RegisterPageComponent {
   public registerForm: FormGroup = this.fb.group({
     name: ['', [ Validators.required ]],
     surname: ['', [ Validators.required ]],
-    email: ['', [ Validators.required ]],
-    password: ['', [ Validators.required ]],
+    email: ['', [ Validators.required, Validators.email ]],
+    password: ['', [ Validators.required, Validators.minLength(8) ]],
     documentNumber: ['', [ Validators.required ]],
     documentType: [1, [ Validators.required ]],
   });
@@ -45,6 +45,30 @@ export class RegisterPageComponent {
       })
 
     return false;
+  }
+
+  isValidField( field: string): boolean | null {
+    return this.registerForm.controls[field].errors
+      && this.registerForm.controls[field].touched;
+  }
+
+  getFieldError( field: string ): string | null {
+    if ( !this.registerForm.controls[field] ) return null;
+
+    const errors = this.registerForm.controls[field].errors || {};
+
+    for (const key of Object.keys(errors)) {
+      switch( key ){
+        case "required":
+          return `Este campo es requerido`;
+        case "minlength":
+          return `Minimo ${errors['minlength'].requiredLength } caracteres.`;
+        case 'email':
+          return `Debe ingresar un email para continuar`
+      }
+    }
+
+    return null;
   }
 
 }
