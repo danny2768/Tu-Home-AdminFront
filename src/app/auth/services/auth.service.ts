@@ -13,10 +13,9 @@ export class AuthService {
 
   constructor( private http: HttpClient) { }
 
-  get userToken(){
+  get userToken(): string {
     if ( !localStorage.getItem('auth_token') ) return '';
-
-    return localStorage.getItem('auth_token')
+    return JSON.parse( localStorage.getItem('auth_token')! )
   }
 
 
