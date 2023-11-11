@@ -7,8 +7,8 @@
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
 
     <div class="form-group">
-      
-  
+
+
       <input
         type="email"
         class="form-control"
@@ -16,15 +16,15 @@
         placeholder="Correo electrónico"
         formControlName="email"
       />
-  
+
       <span *ngIf="isValidField('email')" class="form-text text-danger">
         {{ getFieldError("email") }}
       </span>
     </div>
-  
+
     <div class="form-group">
-      
-  
+
+
       <input
         type="password"
         class="form-control"
@@ -32,19 +32,19 @@
         placeholder="Contraseña"
         formControlName="password"
       />
-  
+
       <span *ngIf="isValidField('password')" class="form-text text-danger">
         {{ getFieldError("password") }}
       </span>
-  
+
       <span *ngIf="loginError" class="form-text text-danger">
         El usuario o contraseña son incorrectos.
       </span>
     </div>
     <p class="new-user-text">
-      ¿Primera vez aquí? <a href="#" class="register-link">Regístrate</a>
+      ¿Primera vez aquí? <a [routerLink]="'/auth/signUp'" class="register-link">Regístrate</a>
     </p>
-  
+
     <button type="submit" class="login-btn mt-3">Iniciar sesion</button>
   </form>
 </main>
