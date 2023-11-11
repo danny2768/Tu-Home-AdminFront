@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from '../../interfaces/user.interface';
+import { User } from 'src/app/shared/interfaces/user.interface';
 import { Token } from '@angular/compiler';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs';

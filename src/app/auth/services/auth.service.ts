@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environments } from 'src/environments/environments';
-import { User } from '../interfaces/user.interface';
+import { User } from 'src/app/shared/interfaces/user.interface';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class AuthService {
   }
 
 
-  registerUser( user: User ): Observable<boolean> {
+  registerUser( user: Partial<User> ): Observable<boolean> {
     return this.http.post(`${this.baseUrl}/register`, user)
       .pipe(
         map( resp => true ),
@@ -27,7 +27,7 @@ export class AuthService {
       );
   }
 
-  loginUser( user: User ): Observable<boolean>{
+  loginUser( user: Partial<User> ): Observable<boolean>{
     return this.http.post<boolean>(`${this.baseUrl}/authenticate`, user)
       .pipe(
         tap( token => {
