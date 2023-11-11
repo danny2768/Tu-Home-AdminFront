@@ -1,90 +1,99 @@
-<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-  <div class="form-group">
-    <label for="name">Nombre:</label>
-
-    <input
-      type="text"
-      class="form-control"
-      id="name"
-      formControlName="name"
-    />
-
-    <span *ngIf="isValidField('name')" class="form-text text-danger">
-      {{ getFieldError("name") }}
-    </span>
-  </div>
-
-  <div class="form-group">
-    <label for="surname">Apellido:</label>
-
-    <input
-      type="text"
-      class="form-control"
-      id="surname"
-      formControlName="surname"
-    />
-
-    <span *ngIf="isValidField('surname')" class="form-text text-danger">
-      {{ getFieldError("surname") }}
-    </span>
-  </div>
-
-  <div class="form-group">
-    <label for="email">Correo electrónico:</label>
-
-    <input
-      type="email"
-      class="form-control"
-      id="email"
-      formControlName="email"
-    />
-
-    <span *ngIf="isValidField('email')" class="form-text text-danger">
-      {{ getFieldError("email") }}
-    </span>
-  </div>
-
-  <div class="form-group">
-    <label for="password">Contraseña:</label>
-
-    <input
-      type="password"
-      class="form-control"
-      id="password"
-      formControlName="password"
-    />
-
-    <span *ngIf="isValidField('password')" class="form-text text-danger">
-      {{ getFieldError("password") }}
-    </span>
-  </div>
-
-  <div class="form-group">
-    <label for="documentNumber">Número de documento:</label>
-
-    <input
-      type="text"
-      class="form-control"
-      id="documentNumber"
-      formControlName="documentNumber"
-    />
-
-    <span *ngIf="isValidField('documentNumber')" class="form-text text-danger">
-      {{ getFieldError("documentNumber") }}
-    </span>
-  </div>
-
-  <div class="form-group">
-    <label for="documentType">Tipo de documento:</label>
-
-    <select
-      class="form-control"
-      id="documentType"
-      formControlName="documentType"
-    >
-      <option value="1">CC</option>
-    </select>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Registrarse</button>
-</form>
+<main class="login-form form-container">
+  <header>
+    <img src="/assets/homelog.png" alt="Tu Home Logo" width="300">
+    <h1 class="form-title">Registro</h1>
+    <p class="form-subtitle">¡Únete a nosotros! Por favor, completa tus datos.</p>
+  </header>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <div class="form-group">
+      
+  
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Nombre"
+        formControlName="name"
+      />
+  
+      <span *ngIf="isValidField('name')" class="form-text text-danger">
+        {{ getFieldError("name") }}
+      </span>
+    </div>
+  
+    <div class="form-group">
+  
+      <input
+        type="text"
+        class="form-control"
+        id="surname"
+        placeholder="Apellido"
+        formControlName="surname"
+      />
+  
+      <span *ngIf="isValidField('surname')" class="form-text text-danger">
+        {{ getFieldError("surname") }}
+      </span>
+    </div>
+  
+    <div class="form-group">
+  
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Correo electrónico"
+        formControlName="email"
+      />
+  
+      <span *ngIf="isValidField('email')" class="form-text text-danger">
+        {{ getFieldError("email") }}
+      </span>
+    </div>
+  
+    <div class="form-group">
+      
+  
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Contraseña"
+        formControlName="password"
+      />
+  
+      <span *ngIf="isValidField('password')" class="form-text text-danger">
+        {{ getFieldError("password") }}
+      </span>
+    </div>
+  
+    <div class="form-group">
+  
+      <input
+        type="text"
+        class="form-control"
+        id="documentNumber"
+        placeholder="Número de documento"
+        formControlName="documentNumber"
+      />
+  
+      <span *ngIf="isValidField('documentNumber')" class="form-text text-danger">
+        {{ getFieldError("documentNumber") }}
+      </span>
+    </div>
+  
+    <div class="form-group">
+      
+  
+      <select
+        class="form-control"
+        id="documentType"
+        formControlName="documentType"
+      >
+        <option value="1">CC</option>
+      </select>
+    </div>
+  
+    <button type="submit" class="register-btn mt-3">Registrarse</button>
+  </form>
+</main>
