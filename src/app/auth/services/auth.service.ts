@@ -13,6 +13,13 @@ export class AuthService {
 
   constructor( private http: HttpClient) { }
 
+  get userToken(){
+    if ( !localStorage.getItem('auth_token') ) return '';
+
+    return localStorage.getItem('auth_token')
+  }
+
+
   registerUser( user: User ): Observable<boolean> {
     return this.http.post(`${this.baseUrl}/register`, user)
       .pipe(
@@ -21,5 +28,15 @@ export class AuthService {
       );
   }
 
+  loginUser( user: User ): Observable<boolean>{
+    return this.http.post<boolean>(`${this.baseUrl}/authenticate`, user)
+      .pipe(
+        tap( token => {
+          localStorage.setItem('auth_token', JSON.stringify(token))
+        }),
+        map( resp => true ),
+        catchError( err => of(false) ),
+      )
+  }
 
 }
