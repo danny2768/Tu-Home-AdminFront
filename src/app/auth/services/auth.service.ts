@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
+
+import { Observable, catchError, map, of, tap } from 'rxjs';
+;
 import { environments } from 'src/environments/environments';
 import { User } from 'src/app/shared/interfaces/user.interface';
-import { Observable, catchError, map, of, tap } from 'rxjs';
+import { Token } from 'src/app/admin/interfaces/token.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +16,10 @@ export class AuthService {
 
   constructor( private http: HttpClient) { }
 
-  get userToken(): string {
+  private get userToken(): string {
     if ( !localStorage.getItem('auth_token') ) return '';
-    return JSON.parse( localStorage.getItem('auth_token')! )
+    const token: Token =  JSON.parse( localStorage.getItem('auth_token')! )
+    return token.accessToken;
   }
 
 
