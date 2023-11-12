@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/shared/interfaces/user.interface';
 import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'auth-register-page',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css']
 })
-export class RegisterPageComponent {
+export class RegisterPageComponent implements OnDestroy{
+
+  private subscription?: Subscription;
 
   public registerForm: FormGroup = this.fb.group({
     name: ['', [ Validators.required ]],
@@ -24,6 +27,12 @@ export class RegisterPageComponent {
     private fb: FormBuilder,
   ){}
 
+  ngOnDestroy(): void {
+    if ( this.subscription ) {
+      this.subscription.unsubscribe();
+    }
+  }
+
   onRegister(): boolean {
     if ( this.registerForm.invalid ) {
       this.registerForm.markAllAsTouched();
@@ -33,7 +42,7 @@ export class RegisterPageComponent {
 
     const user = this.registerForm.value as User;
 
-    this.authService.registerUser( user )
+    this.subscription = this.authService.registerUser( user )
       .subscribe( wasRegistred => {
         if ( !wasRegistred ){
           console.log('El usuario no ha sido registrado');
