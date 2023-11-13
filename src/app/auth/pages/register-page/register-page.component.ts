@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/shared/interfaces/user.interface';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'auth-register-page',
@@ -25,6 +26,7 @@ export class RegisterPageComponent implements OnDestroy{
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
+    private router: Router,
   ){}
 
   ngOnDestroy(): void {
@@ -45,11 +47,14 @@ export class RegisterPageComponent implements OnDestroy{
     this.subscription = this.authService.registerUser( user )
       .subscribe( wasRegistred => {
         if ( !wasRegistred ){
+          alert('Ha ocurrido un error al registrar el usuario.')
           console.log('El usuario no ha sido registrado');
           return false;
         };
 
+        alert('El usuario ha sido registrado con exito.')
         console.log('El usuario fue registrado');
+        this.router.navigate(['./auth/signIn'])
         return true;
       })
 
