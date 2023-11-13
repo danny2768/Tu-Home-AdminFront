@@ -1,1 +1,122 @@
-<p>edit-user-page works!</p>
+<!-- TODO: fix layout when sidebar is finished -->
+
+<div class="login-container">
+  <div class="left-side">
+    <img src="/assets/homelog.png" alt="Tu Home" width="800" />
+  </div>
+  <div class="right-side">
+
+    <main class="login-form form-container">
+      <header>
+        <img src="/assets/homelog.png" alt="Tu Home Logo" width="300" />
+        <h1 class="form-title">Editar usuario</h1>
+        <p class="form-subtitle">
+          Estas a punto de editar al usuario {{ user?.id }}.
+        </p>
+      </header>
+      <form [formGroup]="editUserForm" (ngSubmit)="onEdit()">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Nombre"
+            [ngClass]="{ 'mb-0': isValidField('name') }"
+            formControlName="name"
+          />
+
+          <span *ngIf="isValidField('name')" class="form-text text-danger">
+            {{ getFieldError("name") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="surname"
+            placeholder="Apellido"
+            [ngClass]="{ 'mb-0': isValidField('surname') }"
+            formControlName="surname"
+          />
+
+          <span *ngIf="isValidField('surname')" class="form-text text-danger">
+            {{ getFieldError("surname") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Correo electrónico"
+            [ngClass]="{ 'mb-0': isValidField('email') }"
+            formControlName="email"
+          />
+
+          <span *ngIf="isValidField('email')" class="form-text text-danger">
+            {{ getFieldError("email") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Contraseña"
+            [ngClass]="{ 'mb-0': isValidField('password') }"
+            formControlName="password"
+          />
+
+          <span *ngIf="isValidField('password')" class="form-text text-danger">
+            {{ getFieldError("password") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="documentNumber"
+            placeholder="Número de documento"
+            [ngClass]="{ 'mb-0': isValidField('documentNumber') }"
+            formControlName="documentNumber"
+          />
+
+          <span
+            *ngIf="isValidField('documentNumber')"
+            class="form-text text-danger"
+          >
+            {{ getFieldError("documentNumber") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <select
+            class="form-control"
+            id="documentType"
+            formControlName="documentType"
+          >
+            <option value="10000">CC</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select
+            class="form-control"
+            id="role"
+            formControlName="role"
+          >
+            <option value="10004">Admin</option>
+            <option value="10005">Usuario</option>
+          </select>
+        </div>
+
+        <button type="submit" class="register-btn mt-3">Registrarse</button>
+      </form>
+    </main>
+
+  </div>
+</div>
