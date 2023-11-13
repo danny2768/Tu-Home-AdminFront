@@ -5,6 +5,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { ListUsersPageComponent } from './pages/list-users-page/list-users-page.component';
 import { ListPropertiesPageComponent } from './pages/list-properties-page/list-properties-page.component';
 import { PropertyPageComponent } from './pages/property-page/property-page.component';
+import { EditUserPageComponent } from './pages/edit-user-page/edit-user-page.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'manage/users',
         component: ListUsersPageComponent
+      },
+      {
+        path: 'manage/users/:id',
+        component: EditUserPageComponent
       },
       {
         path: 'manage/properties',
