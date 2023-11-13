@@ -17,7 +17,6 @@ export class ListUsersPageComponent implements OnInit, OnDestroy{
   constructor( private adminService: AdminService ) { }
 
   ngOnInit(): void {
-
     // * Obtener lista de usuarios en la pagina
     this.subscription = this.adminService.getUsers()
     .subscribe( users => {
@@ -29,16 +28,6 @@ export class ListUsersPageComponent implements OnInit, OnDestroy{
     if ( this.subscription ) {
       this.subscription.unsubscribe();
     }
-  }
-
-
-
-
-  getUsers(){
-    this.adminService.getUsers()
-      .subscribe( users => {
-        this.userList = users;
-      });
   }
 
 }
