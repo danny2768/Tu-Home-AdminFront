@@ -10,6 +10,7 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { ListPropertiesPageComponent } from './pages/list-properties-page/list-properties-page.component';
 import { ListUsersPageComponent } from './pages/list-users-page/list-users-page.component';
 import { PropertyPageComponent } from './pages/property-page/property-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PropertyPageComponent } from './pages/property-page/property-page.compo
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }
