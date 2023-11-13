@@ -1,19 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/shared/interfaces/user.interface';
-import { Token } from '@angular/compiler';
 import { Router } from '@angular/router';
-import { catchError } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'auth-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnDestroy{
 
   public loginError: boolean = false;
+  private subscription?: Subscription;
 
   public loginForm: FormGroup = this.fb.group({
     email: ['', [ Validators.required ]],
@@ -26,6 +26,12 @@ export class LoginPageComponent {
     private router: Router,
   ){}
 
+  ngOnDestroy(): void {
+    if ( this.subscription ) {
+      this.subscription.unsubscribe();
+    }
+  }
+
   onLogin(): boolean {
     if ( this.loginForm.invalid ) {
       this.loginForm.markAllAsTouched();
@@ -35,7 +41,7 @@ export class LoginPageComponent {
 
     const user = this.loginForm.value as User;
 
-    this.authService.loginUser( user )
+    this.subscription = this.authService.loginUser( user )
       .subscribe( isAuthenticated => {
         if ( !isAuthenticated ){
           this.loginError = true;
