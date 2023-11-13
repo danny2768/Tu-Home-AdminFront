@@ -14,6 +14,7 @@
         class="form-control"
         id="email"
         placeholder="Correo electrónico"
+        [ngClass]="{'mb-0': isValidField('email')}"
         formControlName="email"
       />
 
@@ -30,6 +31,7 @@
         class="form-control"
         id="password"
         placeholder="Contraseña"
+        [ngClass]="{'mb-0': isValidField('password')}"
         formControlName="password"
       />
 
