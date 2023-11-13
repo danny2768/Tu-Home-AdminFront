@@ -22,7 +22,7 @@ export class AdminService {
     return token.accessToken;
   }
 
-  private get authHeader(){
+  private get authHeader(): HttpHeaders{
     return new HttpHeaders({ Authorization: `Bearer ${this.userToken}` })
   }
   // TODO: Implement http interceptor
