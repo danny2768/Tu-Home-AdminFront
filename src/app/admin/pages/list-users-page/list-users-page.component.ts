@@ -3,6 +3,7 @@ import { AdminService } from '../../services/admin.service';
 import { User } from 'src/app/shared/interfaces/user.interface';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { Contract } from '../../interfaces/contract.interface';
 
 @Component({
   selector: 'admin-list-users-page',
@@ -52,6 +53,30 @@ export class ListUsersPageComponent implements OnInit, OnDestroy{
         return true;
       })
     }
+    return false;
+  }
+
+  onProperty( userId: number ): boolean{
+
+    let propertyId: number | undefined;
+
+    this.adminService.getContracts()
+      .subscribe((contracts: Contract[]) => {
+
+      const matchingContract = contracts.find(contract => contract.tenant === userId);
+
+      if (matchingContract) {
+        propertyId = matchingContract.landlord;
+        // console.log('Landlord ID:', propertyId);
+        this.router.navigateByUrl(`/admin/manage/properties/${propertyId}`)
+        return true;
+      } else {
+        console.log(`No se encontraron contratos para el usuario con ID: ${ userId }`);
+        alert('Este usuario no tiene ningun inmueble contratado.')
+        return false;
+      }
+    });
+
     return false;
   }
 
