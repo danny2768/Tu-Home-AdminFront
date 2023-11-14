@@ -7,6 +7,7 @@ import { environments } from 'src/environments/environments';
 import { User } from 'src/app/shared/interfaces/user.interface';
 import { Token } from '../interfaces/token.interface';
 import { Property } from '../interfaces/property.interface';
+import { Contract } from '../interfaces/contract.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +60,7 @@ export class AdminService {
   // # Http req related to REAL STATE PROPERTIES
 
   createProperty( property: Partial<Property> ): Observable<boolean> {
-    return this.http.post<boolean>(`${this.baseUrl}/register`, property, { headers: this.authHeader })
+    return this.http.post<boolean>(`${this.baseUrl}/api/properties`, property, { headers: this.authHeader })
       .pipe(
         map( resp => true ),
         catchError( err => of(false) ),
