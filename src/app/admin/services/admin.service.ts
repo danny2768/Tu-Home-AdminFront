@@ -6,6 +6,7 @@ import { Observable, catchError, map, of } from 'rxjs';
 import { environments } from 'src/environments/environments';
 import { User } from 'src/app/shared/interfaces/user.interface';
 import { Token } from '../interfaces/token.interface';
+import { Property } from '../interfaces/property.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -56,5 +57,40 @@ export class AdminService {
   }
 
   // # Http req related to REAL STATE PROPERTIES
+
+  createProperty( property: Partial<Property> ): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/register`, property, { headers: this.authHeader })
+      .pipe(
+        map( resp => true ),
+        catchError( err => of(false) ),
+      );
+  }
+
+  getProperties(): Observable<Property[]>{
+    return this.http.get<Property[]>(`${this.baseUrl}/api/properties`, { headers: this.authHeader });
+  }
+
+  getPropertyById( id: string ): Observable<Property | undefined>{
+    return this.http.get<Property>(`${this.baseUrl}/api/properties/${id}`, { headers: this.authHeader })
+      .pipe(
+        catchError( err => of(undefined))
+      );
+  }
+
+  updateProperty( property: Property, id: string): Observable<boolean> {
+    return this.http.put<boolean>(`${this.baseUrl}/api/properties/${id}`, property, { headers: this.authHeader })
+      .pipe(
+        map( resp => true ),
+        catchError( err => of(false) ),
+      );
+  }
+
+  deletePropertyById( id: string): Observable<boolean> {
+    return this.http.delete(`${this.baseUrl}/api/properties/${id}`, { headers: this.authHeader })
+      .pipe(
+        map( resp => true ),
+        catchError( err => of(false) ),
+      );
+  }
 
 }
