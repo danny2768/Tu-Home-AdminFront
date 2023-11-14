@@ -94,4 +94,40 @@ export class AdminService {
       );
   }
 
+  // # Http req related to CONTRACTS
+
+  createContract( contract: Partial<Contract> ): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/api/contracts`, contract, { headers: this.authHeader })
+      .pipe(
+        map( resp => true ),
+        catchError( err => of(false) ),
+      );
+  }
+
+  getContracts(): Observable<Contract[]>{
+    return this.http.get<Contract[]>(`${this.baseUrl}/api/contracts`, { headers: this.authHeader });
+  }
+
+  getContractById( id: string ): Observable<Contract | undefined>{
+    return this.http.get<Contract>(`${this.baseUrl}/api/contracts/${id}`, { headers: this.authHeader })
+      .pipe(
+        catchError( err => of(undefined))
+      );
+  }
+
+  updateContract( contract: Contract, id: string): Observable<boolean> {
+    return this.http.put<boolean>(`${this.baseUrl}/api/contracts/${id}`, contract, { headers: this.authHeader })
+      .pipe(
+        map( resp => true ),
+        catchError( err => of(false) ),
+      );
+  }
+
+  deleteContractById( id: string): Observable<boolean> {
+    return this.http.delete(`${this.baseUrl}/api/contracts/${id}`, { headers: this.authHeader })
+      .pipe(
+        map( resp => true ),
+        catchError( err => of(false) ),
+      );
+  }
 }
