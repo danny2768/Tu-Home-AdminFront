@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Error404PageComponent } from './pages/error404-page/error404-page.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,6 +12,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   ],
   imports: [
     // CommonModule
+    RouterModule
   ],
   exports: [
     Error404PageComponent,

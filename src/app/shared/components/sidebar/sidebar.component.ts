@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shared-sidebar',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  constructor( private router: Router){}
 }
