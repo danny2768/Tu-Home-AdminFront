@@ -3,35 +3,36 @@
   <h1 class="t1 ms-3">Usuarios</h1>
 </div>
 
-<button class="btn btn-primary btn-lg" (click)="changeOrder('id')">Id</button>
-<button class="btn btn-primary btn-lg" (click)="changeOrder('name')">Nombre</button>
-<button class="btn btn-primary btn-lg" (click)="changeOrder('surname')">Apellido</button>
-<button class="btn btn-primary btn-lg" (click)="changeOrder('email')">Email</button>
+<button class="status-cell btn btn-order btn-sm" (click)="changeOrder('id')">Id</button>
+<button class="status-cell btn btn-order btn-sm" (click)="changeOrder('name')">Nombre</button>
+<button class="status-cell btn btn-order btn-sm" (click)="changeOrder('surname')">Apellido</button>
+<button class="status-cell btn btn-order btn-sm" (click)="changeOrder('email')">Email</button>
 
 <div class="container mt-4 p-0">
-  <table class="table table-bordered table-white text-center tb1">
+  <table>
     <thead>
       <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Correo electronico</th>
-        <th scope="col">Inmuebles</th>
-        <th scope="col">Accion</th>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo electronico</th>
+        <th>Inmuebles</th>
+        <th>Accion</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let user of userList! | sortBy: orderby">
-        <td>{{ user.id }}</td>
-        <td>{{ user.name }}</td>
-        <td>{{ user.surname }}</td>
-        <td>{{ user.email }}</td>
-        <td>
-          <button class="btn btn-primary btn-sm" (click)="onProperty(user.id)">
+        <td class="id">{{ user.id }}</td>
+        <td class="name">{{ user.name }}</td>
+        <td class="name">{{ user.surname }}</td>
+        <td class="email">{{ user.email }}</td>
+        <td class="inmuebles">
+          <button class="status-cell btn btn-inmueble btn-sm" (click)="onProperty(user.id)">
             Inmueble
           </button>
         </td>
-        <td>
+        
+        <td class="accion">
           <button class="btn icon-link" (click)="onEdit(user.id.toString())">
             <svg
               xmlns="http://www.w3.org/2000/svg"
