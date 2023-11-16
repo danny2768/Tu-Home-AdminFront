@@ -56,6 +56,10 @@ export class ListUsersPageComponent implements OnInit, OnDestroy{
     return false;
   }
 
+  onEdit( userId: string ): void {
+    this.router.navigate([`./admin/manage/users/${userId}`])
+  }
+
   onProperty( userId: number ): boolean{
 
     let propertyId: number | undefined;
