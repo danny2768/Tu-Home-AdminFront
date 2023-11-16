@@ -2,7 +2,7 @@
 <div class="d-flex my-5">
   <h1 class="t1 ms-3">Usuarios</h1>
 </div>
-
+<!-- TODO: Sort icon -->
 <button class="status-cell btn btn-order btn-sm" (click)="changeOrder('id')">Id</button>
 <button class="status-cell btn btn-order btn-sm" (click)="changeOrder('name')">Nombre</button>
 <button class="status-cell btn btn-order btn-sm" (click)="changeOrder('surname')">Apellido</button>
@@ -31,7 +31,7 @@
             Inmueble
           </button>
         </td>
-        
+
         <td class="accion">
           <button class="btn icon-link" (click)="onEdit(user.id.toString())">
             <svg
