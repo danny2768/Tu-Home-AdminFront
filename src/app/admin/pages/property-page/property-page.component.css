@@ -1,0 +1,28 @@
+.b1{
+  color:#F5F6F8
+}
+.t1{
+  color: #109CF1;
+}
+.s1{
+  color: #334D6E
+}
+.s2{
+  color: #90A0B7
+}
+
+.t2{
+  color: #6B6B6B;
+}
+
+.custom-rounded-table {
+  border-radius: 40px; /* Ajusta el valor según tus necesidades */
+  overflow: hidden; /* Para asegurar que el redondeo de bordes se aplique correctamente */
+}
+
+.filtro {
+  /* Estilos para el contenedor de filtro */
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos hijos */
+  /* Otros estilos... */
+}
