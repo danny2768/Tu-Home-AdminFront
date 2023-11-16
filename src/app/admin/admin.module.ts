@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
@@ -10,7 +11,8 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { ListPropertiesPageComponent } from './pages/list-properties-page/list-properties-page.component';
 import { ListUsersPageComponent } from './pages/list-users-page/list-users-page.component';
 import { PropertyPageComponent } from './pages/property-page/property-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 
 @NgModule({
@@ -20,7 +22,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListPropertiesPageComponent,
     PropertyPageComponent,
     LayoutPageComponent,
-    EditUserPageComponent
+    EditUserPageComponent,
+
+    // Pipes
+    SortByPipe
   ],
   imports: [
     CommonModule,
