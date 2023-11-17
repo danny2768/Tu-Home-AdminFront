@@ -13,6 +13,7 @@ import { ListUsersPageComponent } from './pages/list-users-page/list-users-page.
 import { PropertyPageComponent } from './pages/property-page/property-page.component';
 
 import { SortByPipe } from './pipes/sort-by.pipe';
+import { PropertyTypePipe } from './pipes/property-type.pipe';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     EditUserPageComponent,
 
     // Pipes
-    SortByPipe
+    SortByPipe,
+    PropertyTypePipe
   ],
   imports: [
     CommonModule,
