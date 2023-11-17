@@ -6,6 +6,7 @@ import { ListUsersPageComponent } from './pages/list-users-page/list-users-page.
 import { ListPropertiesPageComponent } from './pages/list-properties-page/list-properties-page.component';
 import { PropertyPageComponent } from './pages/property-page/property-page.component';
 import { EditUserPageComponent } from './pages/edit-user-page/edit-user-page.component';
+import { EditPropertyPageComponent } from './pages/edit-property-page/edit-property-page.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'manage/properties/:id',
         component: PropertyPageComponent
+      },
+      {
+        path: 'edit/property/:id',
+        component: EditPropertyPageComponent
       },
       {
         path: '**',
