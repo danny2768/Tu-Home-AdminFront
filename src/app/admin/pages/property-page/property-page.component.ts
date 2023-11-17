@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, switchMap } from 'rxjs';
 import { AdminService } from '../../services/admin.service';
 import { Property } from '../../interfaces/property.interface';
+import { Content } from '../../interfaces/imageProperty.interface';
 
 @Component({
   selector: 'admin-property-page',
@@ -13,8 +14,11 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
 
   private subscription?: Subscription;
   private subscription1?: Subscription;
+  private subscription2?: Subscription;
 
   public property?: Property;
+  public propertyImage: string = '/assets/defaultproperty.png';
+
 
   constructor(
     private adminService: AdminService,
@@ -32,6 +36,9 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
 
         return this.property = property;
       })
+    setTimeout(() => {
+      this.getPropertyImage(this.property?.id?.toString()!)
+    }, 1000);
   }
 
   ngOnDestroy(): void {
@@ -41,6 +48,9 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
 
     if ( this.subscription1 ) {
       this.subscription1.unsubscribe();
+    }
+    if ( this.subscription2 ) {
+      this.subscription2.unsubscribe();
     }
   }
 
@@ -66,5 +76,16 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
 
   onEdit(): void {
     this.router.navigate([`./admin/edit/property/${this.property?.id}`])
+  }
+
+  getPropertyImage( propertyId: string ): void {
+    this.subscription2 = this.adminService.getImageByPropertyId(propertyId)
+      .subscribe( imageContent => {
+        if (imageContent.length === 0) return
+
+        this.propertyImage = imageContent[0].url
+        return
+      })
+    return
   }
 }

@@ -8,7 +8,7 @@ import { User } from 'src/app/shared/interfaces/user.interface';
 import { Token } from '../interfaces/token.interface';
 import { Property } from '../interfaces/property.interface';
 import { Contract } from '../interfaces/contract.interface';
-import { Image } from '../interfaces/imageProperty.interface';
+import { Content, Image } from '../interfaces/imageProperty.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -99,6 +99,10 @@ export class AdminService {
 
   getImages(): Observable<Image[]>{
     return this.http.get<Image[]>(`${this.baseUrl}/api/networkImages`, { headers: this.authHeader });
+  }
+
+  getImageByPropertyId( propertyId: string ): Observable<Content[]>{
+    return this.http.get<Content[]>(`${this.baseUrl}/api/networkImages/property/${propertyId}`, { headers: this.authHeader });
   }
 
 
