@@ -26,3 +26,9 @@
     align-items: center; /* Centra verticalmente los elementos hijos */
     /* Otros estilos... */
 }
+
+.custom-rounded-table:hover {
+    cursor: pointer;
+    border: 2px solid #007bff;
+    transition: border 0.3s ease-in-out;
+  }
