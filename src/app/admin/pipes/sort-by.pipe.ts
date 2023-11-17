@@ -6,7 +6,7 @@ import { User } from 'src/app/shared/interfaces/user.interface';
   name: 'sortBy',
 })
 export class SortByPipe implements PipeTransform {
-  transform(users: User[], sortBy?: keyof User | ''): User[] {
+  transform(users: User[], sortBy?: keyof User | 'admin' | ''): User[] {
     switch (sortBy) {
       case 'id':
         return users.sort((a, b) => (a.id > b.id ? 1 : -1));
@@ -19,6 +19,9 @@ export class SortByPipe implements PipeTransform {
 
       case 'email':
         return users.sort((a, b) => (a.email > b.email ? 1 : -1));
+
+      case 'admin':
+          return users.filter(user => user.name.includes('THAdmin')).sort((a, b) => (a.name > b.name ? 1 : -1));
 
       default:
         return users;

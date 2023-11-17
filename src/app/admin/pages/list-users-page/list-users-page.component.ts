@@ -16,7 +16,7 @@ export class ListUsersPageComponent implements OnInit, OnDestroy{
   private subscription1?: Subscription;
 
   public userList?: User[];
-  public orderby: keyof User | '' = '';
+  public orderby: keyof User | 'admin' |'' = '';
 
 
   constructor(
@@ -85,7 +85,7 @@ export class ListUsersPageComponent implements OnInit, OnDestroy{
     return false;
   }
 
-  changeOrder( value: keyof User ){
+  changeOrder( value: keyof User | 'admin' ){
     this.orderby = value;
   }
 }
