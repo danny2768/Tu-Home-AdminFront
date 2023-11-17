@@ -1,47 +1,54 @@
-<div class="row my-5"></div>
-            <div class="d-flex mt-5 border-bottom  ">
-                <h1 class="t1 ms-3">Inmuebles</h1>
-            </div>
-            <div class="d-flex justify-content-center mb-3 border-bottom ">
-                <h1 class="t2  my-3">Inmuebles de Kevin Alexis</h1>
-            </div>
+<div class="row">
+  <div class="d-flex mt-5 border-bottom">
+    <h1 class="t1 ms-3">Inmueble - {{ property?.name }}</h1>
+  </div>
 
-            <div class="row my-4">
-                <div class="col">
-                    <img src="/assets/defaultproperty.png" alt="Tu Home Logo" width="100%" class="img-fluid">
-                </div>
-                <div class="col bg-white rounded-4 shadow">
-                    <div class="container p-4 m-0">
-                        <div class="row border-bottom">
-                            <p class="text-dark fw-bold">Descripción</p>
-                        </div>
-                        <div class="row border-bottom ">
-                            <p class=" my-0 opacity-50 text-secondary">Casa de 4 dormitorios, 2 baños (privados), bellamente amueblada ubicada en Provenza.<br/></p>
-                            <p class="text-dark fw-bold">$1.000.000 COP</p>
-                        </div>
-                        <div class="row border-bottom pt-2">
-                            <p class="text-dark fw-bold">Servicios</p>
-                        </div>
-                        <div class="d-flex flex-wrap text-center border-bottom pt-2">
-                            <p class="col-sm-4 opacity-50 text-dark">24/7 Electricidad</p>
-                            <p class="col-sm-4 opacity-50 text-dark">Gas</p>
-                            <p class="col-sm-4 opacity-50 text-dark">WiFi</p>
-                            <p class="col-sm-4 opacity-50 text-dark">Limpieza Interna</p>
-                            <p class="col-sm-4 opacity-50 text-dark">TV por Satélite</p>
-                            <p class="col-sm-4 opacity-50 text-dark">Acueducto</p>
-                        </div>
-                        <div class="row border-bottom pt-2">
-                            <p class="text-dark fw-bold">Documentos</p>
-                        </div>
-                        <div class="row border-bottom pt-2">
-                            <p class="text-primary fw-bold">Fiador</p>
-                            <p class="text-primary fw-bold">Canon de Arrendamiento</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-between">
-                <button class="btn btn-primary btn-lg w-100">Notificar Pago</button>
-                <button class="btn btn-danger     btn-lg w-100 mx-2">Generar Informe</button>
-                <button class="btn btn-success  btn-lg w-100">Inventario</button>
-            </div>
+  <div class="row my-4">
+    <div class="col">
+      <img
+        src="/assets/defaultproperty.png"
+        alt="Tu Home Logo"
+        width="100%"
+        class="img-fluid"
+      />
+    </div>
+    <div class="col bg-white rounded-4 shadow">
+      <div class="container p-4 m-0">
+        <div class="row border-bottom">
+          <p class="text-dark fw-bold">Descripción</p>
+        </div>
+        <div class="row border-bottom">
+          <p class="my-0 opacity-50 text-secondary">
+            {{ property?.typeOfProperty! | propertyType }} de {{ property?.bedrooms }} dormitorios,
+            {{ property?.bathrooms }} baños, ubicada en {{ property?.address }}. <br> <br>
+          </p>
+          <p class="text-dark fw-bold">Avaluada: {{ +property?.price! | currency:'COP '}}</p>
+        </div>
+        <div class="row border-bottom pt-2">
+          <p class="text-dark fw-bold">Detalles</p>
+        </div>
+        <div class="d-flex flex-wrap text-center border-bottom pt-2">
+          <p class="col-sm-4 opacity-50 text-dark">{{ property?.squareFeet }} m<sup>2</sup></p>
+          <p class="col-sm-4 opacity-50 text-dark"> {{ property?.bedrooms }} Dormitorios</p>
+          <p class="col-sm-4 opacity-50 text-dark"> {{ property?.bathrooms }} Baños</p>
+          <p class="col-sm-4 opacity-50 text-dark" *ngIf="property?.garage"> Garaje </p>
+          <p class="col-sm-4 opacity-50 text-dark" *ngIf="property?.patio"> Patio </p>
+          <p class="col-sm-4 opacity-50 text-dark" *ngIf="property?.elevator"> Elevador </p>
+        </div>
+        <div class="row border-bottom pt-2">
+          <p class="text-dark fw-bold">Documentos</p>
+        </div>
+        <div class="row border-bottom pt-2">
+          <p class="text-primary fw-bold">Fiador</p>
+          <p class="text-primary fw-bold">Canon de Arrendamiento</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-red btn-lg w-100" (click)="onEdit()">Editar</button>
+    <button class="btn btn-primary btn-lg w-100 mx-2">Generar Informe</button>
+    <button class="btn btn-primary btn-lg w-100">Inventario</button>
+    <button class="btn btn-red btn-lg w-100 mx-2" (click)="onDelete()">Eliminar Propiedad</button>
+  </div>
+</div>

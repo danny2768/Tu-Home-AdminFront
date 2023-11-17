@@ -26,3 +26,15 @@
   align-items: center; /* Centra verticalmente los elementos hijos */
   /* Otros estilos... */
 }
+
+.btn-red {
+  background-color: #ff354c;
+  border-color: #ff354c;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #3575ff;
+  border-color: #3575ff;
+  color: white;
+}
