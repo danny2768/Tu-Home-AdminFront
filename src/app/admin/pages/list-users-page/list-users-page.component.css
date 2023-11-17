@@ -1,6 +1,6 @@
 body {
   font-family: 'Poppins', sans-serif;
-  margin: 0; /* Elimina el margen por defecto del body */
+  margin: 0; 
 }
 
 table {
@@ -9,7 +9,7 @@ table {
   border-radius: 0.4rem;
   overflow: hidden;
   margin-bottom: 1rem;
-  border: none; /* Elimina los bordes de la tabla */
+  border: none; 
 }
 
 th, td {
@@ -20,12 +20,12 @@ th, td {
 
 th {
   background-color: transparent;
-  border: none; /* Elimina los bordes de las celdas de encabezado */
+  border: none; 
 }
 
 td.name, td.email, td.inmuebles, td.accion, td.id {
   color: #323C47;
-  border-top: 1px solid #F5F5F5; /* Añade un borde superior negro */
+  border-top: 1px solid #F5F5F5; 
 }
 
 td.email {
@@ -46,7 +46,7 @@ td.email {
 }
 
 tbody tr td {
-  border-bottom: none; /* Elimina la división después de la última fila de usuarios */
+  border-bottom: none;
 }
 
 .tb1{
@@ -78,5 +78,5 @@ tbody tr td {
   cursor: pointer;
   padding: 4px;
   text-align: center;
-  margin-right: 8px; /* Ajusta el margen entre botones */
+  margin-right: 8px;
 }
