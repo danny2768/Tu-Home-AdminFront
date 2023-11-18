@@ -93,6 +93,7 @@
     <button class="btn btn-red btn-lg w-100 mx-2" (click)="onEdit()">Editar</button>
     <button class="btn btn-primary btn-lg w-100 mx-2" *ngIf="!contract" [routerLink]="'/admin/new/contract/'">Añadir contrato</button>
     <button class="btn btn-primary btn-lg w-100 mx-2" [routerLink]="'/admin/property/inventory'">Inventario</button>
-    <button class="btn btn-red btn-lg w-100 mx-2" (click)="onDelete()">Eliminar</button>
+    <button class="btn btn-red btn-lg w-100 mx-2" *ngIf="contract" (click)="onDeleteContract()">Eliminar Contrato</button>
+    <button class="btn btn-red btn-lg w-100 mx-2" (click)="onDelete()">Eliminar Propiedad</button>
   </div>
 </div>

@@ -17,6 +17,7 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
   private subscription1?: Subscription;
   private subscription2?: Subscription;
   private subscription3?: Subscription;
+  private subscription4?: Subscription;
 
   public property?: Property;
   public propertyImage?: string;
@@ -83,6 +84,9 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
     if ( this.subscription3 ) {
       this.subscription3.unsubscribe();
     }
+    if ( this.subscription4 ) {
+      this.subscription4.unsubscribe();
+    }
   }
 
   onDelete(): boolean {
@@ -109,5 +113,24 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
     this.router.navigate([`./admin/edit/property/${this.property?.id}`])
   }
 
+  onDeleteContract(): boolean {
+
+    const resp = confirm(`Estas seguro de que deseas eliminar el contrato ${this.contract?.id}`)
+
+    if( resp ) {
+      this.subscription4 = this.adminService.deleteContractById( this.contract?.id.toString()! )
+      .subscribe( wasDeleted => {
+        if ( !wasDeleted ) {
+          alert('Ha occurido un error al eliminar el contrato')
+          return false;
+        }
+
+        alert('El contrato ha sido eliminado correctamente');
+        window.location.reload();
+        return true;
+      })
+    }
+    return false;
+  }
 
 }
