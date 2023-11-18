@@ -19,6 +19,7 @@ import { NewPropertyPageComponent } from './pages/new-property-page/new-property
 import { NewContractPageComponent } from './pages/new-contract-page/new-contract-page.component';
 import { NotificationPageComponent } from './pages/notification-page/notification-page.component';
 import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { InventoryPageComponent } from './pages/inventory-page/inventory-page.co
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgApexchartsModule
   ]
 })
 export class AdminModule { }
