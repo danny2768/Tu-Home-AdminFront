@@ -7,6 +7,7 @@ import { ListPropertiesPageComponent } from './pages/list-properties-page/list-p
 import { PropertyPageComponent } from './pages/property-page/property-page.component';
 import { EditUserPageComponent } from './pages/edit-user-page/edit-user-page.component';
 import { EditPropertyPageComponent } from './pages/edit-property-page/edit-property-page.component';
+import { NewPropertyPageComponent } from './pages/new-property-page/new-property-page.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'edit/property/:id',
         component: EditPropertyPageComponent
+      },
+      {
+        path: 'new/property',
+        component: NewPropertyPageComponent
       },
       {
         path: '**',
