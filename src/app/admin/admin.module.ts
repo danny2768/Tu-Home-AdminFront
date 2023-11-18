@@ -18,6 +18,7 @@ import { EditPropertyPageComponent } from './pages/edit-property-page/edit-prope
 import { NewPropertyPageComponent } from './pages/new-property-page/new-property-page.component';
 import { NewContractPageComponent } from './pages/new-contract-page/new-contract-page.component';
 import { NotificationPageComponent } from './pages/notification-page/notification-page.component';
+import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { NotificationPageComponent } from './pages/notification-page/notificatio
     NewPropertyPageComponent,
     NewContractPageComponent,
     NotificationPageComponent,
+    InventoryPageComponent,
   ],
   imports: [
     CommonModule,

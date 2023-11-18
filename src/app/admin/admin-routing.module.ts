@@ -9,6 +9,7 @@ import { EditUserPageComponent } from './pages/edit-user-page/edit-user-page.com
 import { EditPropertyPageComponent } from './pages/edit-property-page/edit-property-page.component';
 import { NewPropertyPageComponent } from './pages/new-property-page/new-property-page.component';
 import { NotificationPageComponent } from './pages/notification-page/notification-page.component';
+import { InventoryPageComponent } from './pages/inventory-page/inventory-page.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'manage/users/:id',
         component: EditUserPageComponent
+      },
+      {
+        path: 'property/inventory',
+        component: InventoryPageComponent
       },
       {
         path: 'manage/properties',
