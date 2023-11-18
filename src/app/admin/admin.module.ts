@@ -16,6 +16,8 @@ import { SortByPipe } from './pipes/sort-by.pipe';
 import { PropertyTypePipe } from './pipes/property-type.pipe';
 import { EditPropertyPageComponent } from './pages/edit-property-page/edit-property-page.component';
 import { NewPropertyPageComponent } from './pages/new-property-page/new-property-page.component';
+import { NewContractPageComponent } from './pages/new-contract-page/new-contract-page.component';
+import { NotificationPageComponent } from './pages/notification-page/notification-page.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { NewPropertyPageComponent } from './pages/new-property-page/new-property
     SortByPipe,
     PropertyTypePipe,
     NewPropertyPageComponent,
+    NewContractPageComponent,
+    NotificationPageComponent,
   ],
   imports: [
     CommonModule,

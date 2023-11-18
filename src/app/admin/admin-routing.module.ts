@@ -8,6 +8,7 @@ import { PropertyPageComponent } from './pages/property-page/property-page.compo
 import { EditUserPageComponent } from './pages/edit-user-page/edit-user-page.component';
 import { EditPropertyPageComponent } from './pages/edit-property-page/edit-property-page.component';
 import { NewPropertyPageComponent } from './pages/new-property-page/new-property-page.component';
+import { NotificationPageComponent } from './pages/notification-page/notification-page.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardPageComponent
+      },
+      {
+        path: 'notifications',
+        component: NotificationPageComponent
       },
       {
         path: 'manage/users',
