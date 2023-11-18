@@ -4,6 +4,7 @@ import { Subscription, switchMap } from 'rxjs';
 import { AdminService } from '../../services/admin.service';
 import { Property } from '../../interfaces/property.interface';
 import { Content } from '../../interfaces/imageProperty.interface';
+import { Contract } from '../../interfaces/contract.interface';
 
 @Component({
   selector: 'admin-property-page',
@@ -15,9 +16,13 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
   private subscription?: Subscription;
   private subscription1?: Subscription;
   private subscription2?: Subscription;
+  private subscription3?: Subscription;
 
   public property?: Property;
   public propertyImage?: string;
+  public contract?: Contract
+  public contractStartDate?: Date
+  public contractEndDate?: Date
 
 
   constructor(
@@ -45,6 +50,21 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
         if (content.length === 0) return this.propertyImage = '/assets/defaultproperty.png';
         return this.propertyImage = content[ content.length - 1 ].url;
       });
+
+    this.subscription = this.activatedRoute.params
+      .pipe(
+        switchMap( ({ id }) => this.adminService.getContractByPropertyId( id ))
+      )
+      .subscribe( contract => {
+        if (contract.length === 0) return
+
+        const selectetContract = contract[0]
+
+        this.contractStartDate = new Date( selectetContract.startDate[0], selectetContract.startDate[1]-1, selectetContract.startDate[2] );
+        this.contractEndDate = new Date( selectetContract.endDate[0], selectetContract.endDate[1]-1, selectetContract.endDate[2] );
+
+        return this.contract = selectetContract;
+      })
   }
 
   ngOnDestroy(): void {
@@ -58,6 +78,10 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
 
     if ( this.subscription2 ) {
       this.subscription2.unsubscribe();
+    }
+
+    if ( this.subscription3 ) {
+      this.subscription3.unsubscribe();
     }
   }
 
@@ -85,7 +109,5 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
     this.router.navigate([`./admin/edit/property/${this.property?.id}`])
   }
 
-  test(){
-    console.log(this.propertyImage);
-  }
+
 }
