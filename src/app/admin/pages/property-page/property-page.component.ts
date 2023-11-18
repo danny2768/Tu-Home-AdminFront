@@ -42,7 +42,7 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
         switchMap( ({ id }) => this.adminService.getImageByPropertyId( id ))
       )
       .subscribe( content => {
-        if (!content) return this.propertyImage = '/assets/defaultproperty.png';
+        if (content.length === 0) return this.propertyImage = '/assets/defaultproperty.png';
         return this.propertyImage = content[ content.length - 1 ].url;
       });
   }
