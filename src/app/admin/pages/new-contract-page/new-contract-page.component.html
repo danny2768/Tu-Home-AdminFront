@@ -1,1 +1,113 @@
-<p>new-contract-page works!</p>
+<div class="login-container">
+  <div class="right-side">
+    <main class="login-form form-container">
+      <header>
+        <img src="/assets/homelog.png" alt="Tu Home Logo" width="300" />
+        <h1 class="form-title">Crear contrato</h1>
+        <p class="form-subtitle">
+          Estas a punto de añadir un nuevo contrato.
+        </p>
+      </header>
+      <form [formGroup]="newContractForm" (ngSubmit)="onContract()">
+
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="userId"
+            placeholder="Id usuario"
+            [ngClass]="{ 'mb-0': isValidField('userId') }"
+            formControlName="userId"
+          />
+
+          <span *ngIf="isValidField('userId')" class="form-text text-danger">
+            {{ getFieldError("userId") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="propertyId"
+            placeholder="Id inmueble"
+            [ngClass]="{ 'mb-0': isValidField('propertyId') }"
+            formControlName="propertyId"
+          />
+
+          <span *ngIf="isValidField('propertyId')" class="form-text text-danger">
+            {{ getFieldError("propertyId") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="date"
+            class="form-control"
+            id="startDate"
+            placeholder="Fecha de inicio"
+            [ngClass]="{ 'mb-0': isValidField('startDate') }"
+            formControlName="startDate"
+          />
+
+          <span *ngIf="isValidField('startDate')" class="form-text text-danger">
+            {{ getFieldError("startDate") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="date"
+            class="form-control"
+            id="endDate"
+            placeholder="Fecha de finalizacion"
+            [ngClass]="{ 'mb-0': isValidField('endDate') }"
+            formControlName="endDate"
+          />
+
+          <span *ngIf="isValidField('endDate')" class="form-text text-danger">
+            {{ getFieldError("endDate") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="rent"
+            placeholder="Canon de arrendamiento"
+            [ngClass]="{ 'mb-0': isValidField('rent') }"
+            formControlName="rent"
+          />
+
+          <span *ngIf="isValidField('rent')" class="form-text text-danger">
+            {{ getFieldError("rent") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="deposit"
+            placeholder="Deposito"
+            [ngClass]="{ 'mb-0': isValidField('deposit') }"
+            formControlName="deposit"
+          />
+
+          <span *ngIf="isValidField('deposit')" class="form-text text-danger">
+            {{ getFieldError("deposit") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <select class="form-control" id="status" formControlName="status">
+            <option value="Activo">Activo</option>
+          </select>
+        </div>
+
+        <button type="submit" class="register-btn mt-3">Crear</button>
+      </form>
+    </main>
+  </div>
+</div>
