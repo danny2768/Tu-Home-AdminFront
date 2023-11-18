@@ -17,7 +17,7 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
   private subscription2?: Subscription;
 
   public property?: Property;
-  public propertyImage: string = '/assets/defaultproperty.png';
+  public propertyImage?: string;
 
 
   constructor(
@@ -35,10 +35,16 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
         if (!property) return this.router.navigate(['./admin/manage/users']);
 
         return this.property = property;
-      })
-    setTimeout(() => {
-      this.getPropertyImage(this.property?.id?.toString()!)
-    }, 1000);
+      });
+
+    this.subscription1 = this.activatedRoute.params
+      .pipe(
+        switchMap( ({ id }) => this.adminService.getImageByPropertyId( id ))
+      )
+      .subscribe( content => {
+        if (!content) return this.propertyImage = '/assets/defaultproperty.png';
+        return this.propertyImage = content[ content.length - 1 ].url;
+      });
   }
 
   ngOnDestroy(): void {
@@ -49,6 +55,7 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
     if ( this.subscription1 ) {
       this.subscription1.unsubscribe();
     }
+
     if ( this.subscription2 ) {
       this.subscription2.unsubscribe();
     }
@@ -59,7 +66,7 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
     const resp = confirm(`Estas seguro de que deseas eliminar la propiedad ${this.property?.id}`)
 
     if( resp ) {
-      this.subscription1 = this.adminService.deletePropertyById( this.property?.id.toString()! )
+      this.subscription2 = this.adminService.deletePropertyById( this.property?.id.toString()! )
       .subscribe( wasDeleted => {
         if ( !wasDeleted ) {
           alert('Ha occurido un error al eliminar la propiedad')
@@ -78,14 +85,7 @@ export class PropertyPageComponent implements OnInit, OnDestroy{
     this.router.navigate([`./admin/edit/property/${this.property?.id}`])
   }
 
-  getPropertyImage( propertyId: string ): void {
-    this.subscription2 = this.adminService.getImageByPropertyId(propertyId)
-      .subscribe( imageContent => {
-        if (imageContent.length === 0) return
-
-        this.propertyImage = imageContent[0].url
-        return
-      })
-    return
+  test(){
+    console.log(this.propertyImage);
   }
 }
