@@ -11,8 +11,11 @@ import { Content, Image } from '../../interfaces/imageProperty.interface';
 })
 export class ListPropertiesPageComponent implements OnInit, OnDestroy{
 
-  public propertyList?: Property[];
   private subscription?: Subscription;
+  private subscription1?: Subscription;
+
+  public propertyList?: Property[];
+  public imageList?: Content[];
 
   constructor (
     private adminService: AdminService,
@@ -21,19 +24,28 @@ export class ListPropertiesPageComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     // * Obtener lista de propiedades
     this.subscription = this.adminService.getProperties()
-    .subscribe( properties => {
-      this.propertyList = properties;
-    });
+      .subscribe( properties => {
+        this.propertyList = properties;
+      });
+
+    // * Obtener lista de imagenes
+    this.subscription1 = this.adminService.getImages()
+      .subscribe( images => {
+        this.imageList = images;
+      })
   }
 
   ngOnDestroy(): void {
     if ( this.subscription ) {
       this.subscription.unsubscribe();
     }
+    if ( this.subscription1 ) {
+      this.subscription1.unsubscribe();
+    }
   }
 
-
-
-
-
+  onImage( propertyId: number ): string {
+    const image = this.imageList?.find( image => image.property === propertyId);
+    return image?.url ?? '/assets/defaultproperty.png';
+  }
 }

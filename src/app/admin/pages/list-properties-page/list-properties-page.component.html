@@ -17,7 +17,7 @@
         *ngFor="let property of propertyList"
         [routerLink]="['/admin/manage/properties/', property.id]"
       >
-          <img src="/assets/defaultproperty.png" alt="Tu Home Logo" width="100%" class="img-fluid ">
+          <img [src]="onImage(property.id)" alt="Tu Home Logo" width="100%" class="img-fluid ">
 
           <p class=" text-dark mt-2"><strong>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bricks text-primary" viewBox="0 0 16 16">

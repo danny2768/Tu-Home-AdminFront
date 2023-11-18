@@ -97,8 +97,11 @@ export class AdminService {
 
   // # Http req related to networkImageResource
 
-  getImages(): Observable<Image[]>{
-    return this.http.get<Image[]>(`${this.baseUrl}/api/networkImages`, { headers: this.authHeader });
+  getImages(): Observable<Content[]>{
+    return this.http.get<Image>(`${this.baseUrl}/api/networkImages`, { headers: this.authHeader })
+      .pipe(
+        map( resp => resp.content )
+      );
   }
 
   getImageByPropertyId( propertyId: string ): Observable<Content[]>{
