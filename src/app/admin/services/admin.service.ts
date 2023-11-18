@@ -130,6 +130,14 @@ export class AdminService {
       );
   }
 
+  getContractByUserId( userId: string ): Observable<Contract[]>{
+    return this.http.get<Contract[]>(`${this.baseUrl}/api/contracts/user/${userId}`, { headers: this.authHeader });
+  }
+
+  getContractByPropertyId( propertyId: string ): Observable<Contract[]>{
+    return this.http.get<Contract[]>(`${this.baseUrl}/api/contracts/property/${propertyId}`, { headers: this.authHeader });
+  }
+
   updateContract( contract: Contract, id: string): Observable<boolean> {
     return this.http.put<boolean>(`${this.baseUrl}/api/contracts/${id}`, contract, { headers: this.authHeader })
       .pipe(

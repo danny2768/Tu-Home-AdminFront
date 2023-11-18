@@ -7,6 +7,6 @@ export interface Contract {
   rent:      string;
   deposit:   string;
   status:    string;
-  tenant:    number;
-  landlord:  number;
+  userId:    number;
+  propertyId:  number;
 }

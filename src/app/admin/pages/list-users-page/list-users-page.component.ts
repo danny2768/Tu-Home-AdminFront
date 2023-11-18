@@ -14,6 +14,8 @@ export class ListUsersPageComponent implements OnInit, OnDestroy{
 
   private subscription?: Subscription;
   private subscription1?: Subscription;
+  private subscription2?: Subscription;
+
 
   public userList?: User[];
   public orderby: keyof User | 'admin' |'' = '';
@@ -35,6 +37,12 @@ export class ListUsersPageComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     if ( this.subscription ) {
       this.subscription.unsubscribe();
+    }
+    if ( this.subscription1 ) {
+      this.subscription1.unsubscribe();
+    }
+    if ( this.subscription2 ) {
+      this.subscription2.unsubscribe();
     }
   }
 
@@ -61,26 +69,16 @@ export class ListUsersPageComponent implements OnInit, OnDestroy{
     this.router.navigate([`./admin/manage/users/${userId}`])
   }
 
-  onProperty( userId: number ): boolean{
-
-    let propertyId: number | undefined;
-
-    this.adminService.getContracts()
-      .subscribe((contracts: Contract[]) => {
-
-      const matchingContract = contracts.find(contract => contract.tenant === userId);
-
-      if (matchingContract) {
-        propertyId = matchingContract.landlord;
-        // console.log('Landlord ID:', propertyId);
-        this.router.navigateByUrl(`/admin/manage/properties/${propertyId}`)
+  onProperty ( userId: number ): boolean {
+    this.subscription2 = this.adminService.getContractByUserId( userId.toString() )
+      .subscribe( contract => {
+        if( contract.length === 0 ){
+          alert('Este usuario no tiene ningun inmueble contratado.')
+          return false;
+        }
+        this.router.navigateByUrl(`/admin/manage/properties/${contract[0].propertyId}`)
         return true;
-      } else {
-        console.log(`No se encontraron contratos para el usuario con ID: ${ userId }`);
-        alert('Este usuario no tiene ningun inmueble contratado.')
-        return false;
-      }
-    });
+      })
 
     return false;
   }
