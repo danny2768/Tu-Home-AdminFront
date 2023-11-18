@@ -1,34 +1,47 @@
-.b1{
-    color:#F5F6F8
+.b1 {
+  color: #f5f6f8;
 }
-.t1{
-    color: #109CF1;
+.t1 {
+  color: #109cf1;
 }
-.s1{
-    color: #334D6E
+.s1 {
+  color: #334d6e;
 }
-.s2{
-    color: #90A0B7
+.s2 {
+  color: #90a0b7;
 }
 
-.t2{
-    color: #6B6B6B;
+.t2 {
+  color: #6b6b6b;
 }
 
 .custom-rounded-table {
-    border-radius: 40px; /* Ajusta el valor según tus necesidades */
-    overflow: hidden; /* Para asegurar que el redondeo de bordes se aplique correctamente */
-  }
+  border-radius: 40px; /* Ajusta el valor según tus necesidades */
+  overflow: hidden; /* Para asegurar que el redondeo de bordes se aplique correctamente */
+}
 
 .filtro {
-    /* Estilos para el contenedor de filtro */
-    display: flex;
-    align-items: center; /* Centra verticalmente los elementos hijos */
-    /* Otros estilos... */
+  /* Estilos para el contenedor de filtro */
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos hijos */
+  /* Otros estilos... */
 }
 
 .custom-rounded-table:hover {
-    cursor: pointer;
-    border: 2px solid #007bff;
-    transition: border 0.3s ease-in-out;
-  }
+  cursor: pointer;
+  border: 2px solid #007bff;
+  transition: border 0.3s ease-in-out;
+}
+
+.spinner-container {
+  align-items: center;
+  background-color: rgb(35, 39, 255);
+  border-radius: 20px;
+  bottom: 15px;
+  color: white;
+  display: flex;
+  padding: 5px 15px;
+  position: fixed;
+  right: 15px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}

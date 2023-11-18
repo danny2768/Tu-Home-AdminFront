@@ -1,1 +1,160 @@
-<p>new-property-page works!</p>
+<div class="login-container">
+  <div class="right-side">
+
+    <main class="login-form form-container">
+      <header>
+        <img src="/assets/homelog.png" alt="Tu Home Logo" width="300" />
+        <h1 class="form-title">Añadir inmueble</h1>
+        <p class="form-subtitle">
+          Estas a punto de añadir un nuevo inmueble.
+        </p>
+      </header>
+      <form [formGroup]="newPropertyForm" (ngSubmit)="onRegister()">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Nombre"
+            [ngClass]="{ 'mb-0': isValidField('name') }"
+            formControlName="name"
+          />
+
+          <span *ngIf="isValidField('name')" class="form-text text-danger">
+            {{ getFieldError("name") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="Direccion"
+            [ngClass]="{ 'mb-0': isValidField('address') }"
+            formControlName="address"
+          />
+
+          <span *ngIf="isValidField('address')" class="form-text text-danger">
+            {{ getFieldError("address") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            placeholder="Avaluo"
+            [ngClass]="{ 'mb-0': isValidField('price') }"
+            formControlName="price"
+          />
+
+          <span *ngIf="isValidField('price')" class="form-text text-danger">
+            {{ getFieldError("price") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="squareFeet"
+            placeholder="Metros Cuadrados"
+            [ngClass]="{ 'mb-0': isValidField('squareFeet') }"
+            formControlName="squareFeet"
+          />
+
+          <span *ngIf="isValidField('squareFeet')" class="form-text text-danger">
+            {{ getFieldError("squareFeet") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="bedrooms"
+            placeholder="Habitaciones"
+            [ngClass]="{ 'mb-0': isValidField('bedrooms') }"
+            formControlName="bedrooms"
+          />
+
+          <span *ngIf="isValidField('bedrooms')" class="form-text text-danger">
+            {{ getFieldError("bedrooms") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="bathrooms"
+            placeholder="Baños"
+            [ngClass]="{ 'mb-0': isValidField('bathrooms') }"
+            formControlName="bathrooms"
+          />
+
+          <span *ngIf="isValidField('bathrooms')" class="form-text text-danger">
+            {{ getFieldError("bathrooms") }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <select
+            class="form-control"
+            id="garage"
+            formControlName="garage"
+          >
+            <option value="true">Con garaje</option>
+            <option value="false">Sin garaje</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select
+            class="form-control"
+            id="patio"
+            formControlName="patio"
+          >
+            <option value="true">Con patio</option>
+            <option value="false">Sin patio</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select
+            class="form-control"
+            id="elevator"
+            formControlName="elevator"
+          >
+            <option value="true">Con ascensor</option>
+            <option value="false">Sin ascensor</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select
+            class="form-control"
+            id="typeOfProperty"
+            formControlName="typeOfProperty"
+          >
+            <option value="10014">{{ 10014 | propertyType }}</option>
+            <option value="10015">{{ 10015 | propertyType }}</option>
+            <option value="10016">{{ 10016 | propertyType }}</option>
+            <option value="10017">{{ 10017 | propertyType }}</option>
+            <option value="10018">{{ 10018 | propertyType }}</option>
+            <option value="10019">{{ 10019 | propertyType }}</option>
+            <option value="10020">{{ 10020 | propertyType }}</option>
+            <option value="10021">{{ 10021 | propertyType }}</option>
+            <option value="10022">{{ 10022 | propertyType }}</option>
+            <option value="10023">{{ 10023 | propertyType }}</option>
+          </select>
+        </div>
+
+        <button type="submit" class="register-btn mt-3">Confirmar</button>
+      </form>
+    </main>
+
+  </div>
+</div>
