@@ -20,7 +20,7 @@ export class RegisterPageComponent implements OnDestroy{
     email: ['', [ Validators.required, Validators.email ]],
     password: ['', [ Validators.required, Validators.minLength(8) ]],
     documentNumber: ['', [ Validators.required ]],
-    documentType: [1, [ Validators.required ]],
+    documentType: [10000, [ Validators.required ]],
   });
 
   constructor(
