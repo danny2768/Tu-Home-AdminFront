@@ -1,28 +1,68 @@
-<div class="row my-5"></div>
-            <div class="d-flex mt-5 border-bottom  ">
-                <h1 class="t1 ms-3">Notificaciones</h1>
-            </div>
-            <div class=" mb-3 border-bottom text-center">
-                <h1 class="t2  ms-3 my-3">Crear notificación</h1>
-            </div>
+<div class="row mb-5">
+  <div class="d-flex mt-5 border-bottom">
+    <h1 class="t1 ms-3">Notificaciones</h1>
+  </div>
+  <div class="mb-3 text-center">
+    <h3 class="t1 ms-3 mt-3">Crear notificación</h3>
+  </div>
 
-            <div class="pt-2">
-                <div class="py-3">
-                    <input type="email" class="form-control" placeholder="Titulo">
-                </div>
-                <div class="py-3">
-                    <textarea class="form-control" rows="12" placeholder="Descripción o contenido"></textarea>
-                </div>
-                <div class="py-3">
-                    <select class="form-select" placeholder="Usuario">
-                        <option value="" disabled selected>Selecciona un usario</option>
-                    </select>
-                </div>
-                <div class="text-end pe-3">
-                    <small class="text-danger">Todos los campos son obligatorios*</small>
-                </div>
-            </div>
+  <form [formGroup]="notificationForm" (ngSubmit)="onNotification()">
+    <div class="mb-3">
 
-            <div class="d-flex justify-content-center py-4">
-                <button type="button" class="btn btn-primary mt-auto fs-4">Enviar</button>
-            </div>
+      <div class="">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Titulo"
+          id="title"
+          formControlName="title"
+        />
+        <span *ngIf="isValidField('title')" class="form-text text-danger">
+          {{ getFieldError("title") }}
+        </span>
+      </div>
+
+
+      <div class="mt-3">
+        <textarea
+          class="form-control"
+          rows="8"
+          placeholder="Descripción o contenido"
+          id="description"
+          formControlName="description"
+        ></textarea>
+
+        <span *ngIf="isValidField('description')" class="form-text text-danger">
+          {{ getFieldError("description") }}
+        </span>
+      </div>
+
+
+      <div class="py-3">
+        <select
+          class="form-select"
+          placeholder="Usuario"
+          id="userId"
+          formControlName="userId"
+        >
+          <option value="" disabled selected>Selecciona un usario</option>
+          <option *ngFor="let user of userList" [value]="user.id">
+            {{ user.id }} - {{ user.email }}
+          </option>
+        </select>
+
+        <span *ngIf="isValidField('userId')" class="form-text text-danger">
+          {{ getFieldError("userId") }}
+        </span>
+      </div>
+
+
+    </div>
+
+    <div class="d-flex justify-content-center py-4">
+      <button type="submit" class="btn btn-primary mt-auto fs-4">Enviar</button>
+    </div>
+
+  </form>
+
+</div>

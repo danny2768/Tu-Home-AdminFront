@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, catchError, map, of } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 
 import { environments } from 'src/environments/environments';
 import { User } from 'src/app/shared/interfaces/user.interface';
@@ -9,6 +9,7 @@ import { Token } from '../interfaces/token.interface';
 import { Property } from '../interfaces/property.interface';
 import { Contract } from '../interfaces/contract.interface';
 import { Content, Image } from '../interfaces/imageProperty.interface';
+import { Notification } from '../interfaces/notification.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -153,4 +154,14 @@ export class AdminService {
         catchError( err => of(false) ),
       );
   }
+
+  // # Http req related to Notifications
+  createNotification( notification: Partial<Notification> ): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/api/notifications`, notification, { headers: this.authHeader })
+      .pipe(
+        map( resp => true ),
+        catchError( err => of(false) ),
+      );
+  }
+
 }
