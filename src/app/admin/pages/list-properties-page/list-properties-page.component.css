@@ -16,7 +16,7 @@
 }
 
 .custom-rounded-table {
-  border-radius: 40px; /* Ajusta el valor según tus necesidades */
+  border-radius: 20px; /* Ajusta el valor según tus necesidades */
   overflow: hidden; /* Para asegurar que el redondeo de bordes se aplique correctamente */
 }
 
