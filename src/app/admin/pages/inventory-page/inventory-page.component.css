@@ -1,0 +1,82 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: none;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  color: #334D6E;
+}
+
+th {
+  background-color: transparent;
+  border: none;
+}
+
+td.name, td.email, td.inmuebles, td.accion, td.id {
+  color: #323C47;
+  border-top: 1px solid #F5F5F5;
+}
+
+td.email {
+  color: #707683;
+}
+
+.status-cell {
+  width: 7.9rem;
+}
+
+.status-button {
+  background-color: #109cf1;
+  color: #ffffff;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  padding: 4px;
+  text-align: center;
+}
+
+tbody tr td {
+  border-bottom: none;
+}
+
+.tb1{
+  border-radius: 10px;
+}
+
+.b1{
+  color:#F5F6F8
+}
+.t1{
+  color: #109CF1;
+}
+.s1{
+  color: #334D6E
+}
+.s2{
+  color: #90A0B7
+}
+
+.btn-inmueble {
+  background-color: #109CF1;
+  color: #ffffff;
+}
+
+.btn-order {
+  background-color: #152C70;
+  color: #ffffff;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  padding: 4px;
+  text-align: center;
+  margin-right: 8px;
+}
